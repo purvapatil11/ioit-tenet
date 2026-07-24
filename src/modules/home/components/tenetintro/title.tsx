@@ -60,9 +60,9 @@ export const TITLETEXT: React.FC = () => {
       className='absolute top-20 w-full text-center md:hidden'
     >
       <h2 className='headline text-lg font-bold text-white'>
-        SECOND EDITION OF IOIT TENET
+        THIRD EDITION OF IOIT TENET
       </h2>
-      <h2 className='date text-sm text-gray-200'>11th - 13th October 2025</h2>
+      <h2 className='date text-sm text-gray-200'>COMING SOON</h2>
     </div>
   );
 };
