@@ -44,7 +44,7 @@ export const MUN = () => {
             </Link>
           </h4>
           <h4>
-            <Link href={'https://unstop.com/conferences/ioit-mun-2026-tenet-aissms-institute-of-information-technology-pune-maharashtra-1699491'} target='_blank'>
+            <Link href={MUNLINK} target='_blank'>
               Register for MUN&lsquo;26
             </Link>
           </h4>
