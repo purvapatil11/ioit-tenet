@@ -18,6 +18,7 @@ const sections = [
       { name: "Register", href: "/register" },
       { name: "IOIT ACM", href: "https://ioit.acm.org/" },
       { name: "TENET'24", href: "/24/events" },
+      { name: "TENET'25", href: "/25/events" },
     ],
   },
   {
