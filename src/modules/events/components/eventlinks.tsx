@@ -4,17 +4,20 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { day1, day2, day3 } from '@/config/data/25/events';
+import { getDayByYear } from '@/lib/getEvents';
 import type { EventType } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const EventLinksStructure: React.FC<{ day: number }> = ({ day }) => {
-  const events = getEventsForDay(day);
+  const pathname = usePathname();
+  const year = pathname.split('/')[1] ?? '25';
+  const events = getEventsForDay(year, day);
   const eventsContainerRef = useRef(null);
 
   useEffect(() => {
@@ -69,7 +72,7 @@ export const EventLinksStructure: React.FC<{ day: number }> = ({ day }) => {
             {domainEvents
               .sort((a, b) => a.start.getTime() - b.start.getTime())
               .map((event) => (
-                <EventCard key={event.id} event={event} />
+                <EventCard key={event.id} event={event} year={year} />
               ))}
           </div>
         </div>
@@ -78,10 +81,10 @@ export const EventLinksStructure: React.FC<{ day: number }> = ({ day }) => {
   );
 };
 
-const EventCard: React.FC<{ event: EventType }> = ({ event }) => {
+const EventCard: React.FC<{ event: EventType; year: string }> = ({ event, year }) => {
   return (
     <Link
-      href={`/25/events/${event.id}`}
+      href={`/${year}/events/${event.id}`}
       shallow={true}
       className='event-card group block transform overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition duration-300 hover:shadow-xl'
     >
@@ -123,14 +126,14 @@ const EventCard: React.FC<{ event: EventType }> = ({ event }) => {
   );
 };
 
-const getEventsForDay = (day: number): EventType[] => {
+const getEventsForDay = (year: string, day: number): EventType[] => {
   switch (day) {
     case 1:
-      return day1.filter((item) => item.imp);
+      return getDayByYear(year, 1).filter((item) => item.imp);
     case 2:
-      return day2.filter((item) => item.imp);
+      return getDayByYear(year, 2).filter((item) => item.imp);
     case 3:
-      return day3.filter((item) => item.imp);
+      return getDayByYear(year, 3).filter((item) => item.imp);
     default:
       return [];
   }

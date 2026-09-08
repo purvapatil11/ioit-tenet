@@ -1,14 +1,19 @@
+'use client';
+
 import React from 'react';
-import { day1, day2, day3 } from '@/config/data/25/events';
+import { getEventsByYear } from '@/lib/getEvents';
 import { FaArrowRightLong, FaArrowLeftLong } from 'react-icons/fa6';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function EventNavigation({ eventid }: { eventid: string }) {
-  const days = [day1, day2, day3];
+  const pathname = usePathname();
+  const year = pathname.split('/')[1] ?? '25';
+  const days = getEventsByYear(year);
 
-  const sortedDays = days
-    .flat()
-    .sort((a, b) => a.start.getTime() - b.start.getTime());
+  const sortedDays = [...days].sort(
+    (a, b) => a.start.getTime() - b.start.getTime(),
+  );
 
   const currentIndex = sortedDays.findIndex((event) => event.id === eventid);
 
@@ -20,7 +25,7 @@ export default function EventNavigation({ eventid }: { eventid: string }) {
     <div className='mt-14 grid w-full grid-cols-2 items-center justify-between gap-3 md:hidden'>
       {previousEvent ? (
         <Link
-          href={'/25/events/' + previousEvent.id}
+          href={`/${year}/events/${previousEvent.id}`}
           className='flex h-full flex-col items-center justify-between gap-2 rounded-xl bg-slate-500 p-1'
         >
           <span className='line-clamp-2 text-center text-sm font-medium'>
@@ -34,7 +39,7 @@ export default function EventNavigation({ eventid }: { eventid: string }) {
 
       {nextEvent ? (
         <Link
-          href={'/25/events/' + nextEvent.id}
+          href={`/${year}/events/${nextEvent.id}`}
           className='flex h-full flex-col items-center justify-between gap-2 rounded-xl bg-slate-500 p-1'
         >
           <span className='line-clamp-2 text-center text-sm font-medium'>

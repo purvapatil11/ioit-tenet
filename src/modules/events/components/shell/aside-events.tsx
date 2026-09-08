@@ -1,6 +1,6 @@
 'use client';
 
-import { day1, day2, day3 } from '@/config/data/25/events';
+import { getDayByYear } from '@/lib/getEvents';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import type { EventType } from '@/types';
@@ -9,10 +9,12 @@ import Image from 'next/image';
 import { Clock } from '../clock';
 
 export const EventsSidePannel = () => {
-  const days = [day1, day2, day3];
+  const pathname = usePathname();
+  const year = pathname.split('/')[1] ?? '25';
+  const days = [getDayByYear(year, 1), getDayByYear(year, 2), getDayByYear(year, 3)];
 
   const sortedDays = days.map((day) =>
-    day.sort((a, b) => a.start.getTime() - b.start.getTime()),
+    [...day].sort((a, b) => a.start.getTime() - b.start.getTime()),
   );
 
   return (
@@ -23,7 +25,7 @@ export const EventsSidePannel = () => {
             Day {dayIndex + 1}
           </h2>
           {day.map((item, index) => (
-            <ScheduleItem key={`Day ${dayIndex} - ${index}`} data={item} />
+            <ScheduleItem year={year} key={`Day ${dayIndex} - ${index}`} data={item} />
           ))}
         </div>
       ))}
@@ -32,7 +34,7 @@ export const EventsSidePannel = () => {
   );
 };
 
-export const ScheduleItem = ({ data }: { data: EventType }) => {
+export const ScheduleItem = ({ data, year }: { data: EventType; year: string }) => {
   const pathname = usePathname();
   const isActive = pathname.split('/').pop() === data.id;
   const itemRef = useRef<HTMLDivElement>(null);
@@ -46,7 +48,7 @@ export const ScheduleItem = ({ data }: { data: EventType }) => {
   return (
     <div ref={itemRef}>
       <Link
-        href={`/25/events/${data.id}`}
+        href={`/${year}/events/${data.id}`}
         className={`relative mb-5 flex flex-col p-4 transition-all hover:text-slate-300 md:mb-0 md:border-none ${
           isActive
             ? 'rounded-xl border-opacity-25 bg-white/10 text-white'
