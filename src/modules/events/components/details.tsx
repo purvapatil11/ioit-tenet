@@ -320,7 +320,7 @@ ${
                   type='button'
                   className='text-black hover:text-white'
                   onClick={() =>
-                    handleShare({ msg, url: `/24/events/${event.id}` })
+                    handleShare({ msg, url: `/25/events/${event.id}` })
                   }
                 >
                   Share

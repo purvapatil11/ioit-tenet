@@ -1,5 +1,5 @@
 import React from 'react';
-import { day1, day2, day3 } from '@/config/data/24/events';
+import { day1, day2, day3 } from '@/config/data/25/events';
 import { FaArrowRightLong, FaArrowLeftLong } from 'react-icons/fa6';
 import Link from 'next/link';
 
@@ -20,7 +20,7 @@ export default function EventNavigation({ eventid }: { eventid: string }) {
     <div className='mt-14 grid w-full grid-cols-2 items-center justify-between gap-3 md:hidden'>
       {previousEvent ? (
         <Link
-          href={'/24/events/' + previousEvent.id}
+          href={'/25/events/' + previousEvent.id}
           className='flex h-full flex-col items-center justify-between gap-2 rounded-xl bg-slate-500 p-1'
         >
           <span className='line-clamp-2 text-center text-sm font-medium'>
@@ -34,7 +34,7 @@ export default function EventNavigation({ eventid }: { eventid: string }) {
 
       {nextEvent ? (
         <Link
-          href={'/24/events/' + nextEvent.id}
+          href={'/25/events/' + nextEvent.id}
           className='flex h-full flex-col items-center justify-between gap-2 rounded-xl bg-slate-500 p-1'
         >
           <span className='line-clamp-2 text-center text-sm font-medium'>

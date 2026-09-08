@@ -4,7 +4,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { day1, day2, day3 } from '@/config/data/24/events';
+import { day1, day2, day3 } from '@/config/data/25/events';
 import type { EventType } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -81,7 +81,7 @@ export const EventLinksStructure: React.FC<{ day: number }> = ({ day }) => {
 const EventCard: React.FC<{ event: EventType }> = ({ event }) => {
   return (
     <Link
-      href={`/24/events/${event.id}`}
+      href={`/25/events/${event.id}`}
       shallow={true}
       className='event-card group block transform overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition duration-300 hover:shadow-xl'
     >

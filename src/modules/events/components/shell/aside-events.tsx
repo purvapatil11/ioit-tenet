@@ -1,6 +1,6 @@
 'use client';
 
-import { day1, day2, day3 } from '@/config/data/24/events';
+import { day1, day2, day3 } from '@/config/data/25/events';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import type { EventType } from '@/types';
@@ -46,7 +46,7 @@ export const ScheduleItem = ({ data }: { data: EventType }) => {
   return (
     <div ref={itemRef}>
       <Link
-        href={`/24/events/${data.id}`}
+        href={`/25/events/${data.id}`}
         className={`relative mb-5 flex flex-col p-4 transition-all hover:text-slate-300 md:mb-0 md:border-none ${
           isActive
             ? 'rounded-xl border-opacity-25 bg-white/10 text-white'

@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/sheet';
 import { MusicBtn } from '@/components/common/musicplayer';
 import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
-import { routes } from '@/config/data/24/navbar';
+import { routes } from '@/config/data/25/navbar';
 
 import { CiMenuFries } from 'react-icons/ci';
 
@@ -29,7 +29,7 @@ interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Shell({ children }: ShellProps) {
   const pathname = usePathname();
 
-  const isEventsPath = pathname.startsWith('/24/events');
+  const isEventsPath = pathname.startsWith('/25/events');
 
   return (
     <div className={cn('flex h-screen flex-col')}>
@@ -59,12 +59,12 @@ export function Shell({ children }: ShellProps) {
             <Link className='transition-all hover:underline' href='/'>
               Home
             </Link>
-            <Link className='transition-all hover:underline' href='/24/events'>
+            <Link className='transition-all hover:underline' href='/25/events'>
               Events
             </Link>
             <Link
               className='transition-all hover:underline'
-              href='/24/speakers'
+              href='/25/speakers'
             >
               Speakers
             </Link>

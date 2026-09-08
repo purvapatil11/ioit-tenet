@@ -13,7 +13,7 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel';
 import { useState, useEffect } from 'react';
-import { day1, day2, day3 } from '@/config/data/24/events';
+import { day1, day2, day3 } from '@/config/data/25/events';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -77,7 +77,7 @@ const MobileFooter = () => {
               {allEvents.map((event, index) => (
                 <CarouselItem key={index}>
                   <Link
-                    href={`/24/events/${event.id}`}
+                    href={`/25/events/${event.id}`}
                     onClick={handleItemClick}
                   >
                     <div className='relative flex h-full select-none flex-col items-center justify-between px-4 py-10 text-center'>
