@@ -6,3 +6,8 @@ export const routes: navbarType[] = [
   { path: 'https://hack.ioittenet.com/', name: 'Hackathon' },
   { path: '/register/esports', name: 'eSports' },
 ];
+
+export const homeRoutes: navbarType[] = [
+  { path: '/techfiesta', name: 'Techfiesta' },
+  { path: 'https://mun.ioittenet.com/', name: 'MUN' },
+];
