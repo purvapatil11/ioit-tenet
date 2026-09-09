@@ -28,7 +28,7 @@ const Page = ({ params }: { params: { year: string } }) => {
   const routes = year === '24' ? routes24 : routes25;
   return (
     <div className='bg-slate-200'>
-      <EventsList />
+      <EventsList year={year} />
       <FixedNavBar routes={routes} />
       <Footer />
     </div>

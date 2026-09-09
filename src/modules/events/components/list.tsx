@@ -11,10 +11,10 @@ import { EventLinksStructure } from './eventlinks';
 // import { HiExternalLink } from 'react-icons/hi';
 // import { Button } from '@/components/ui/RoundedButton';
 
-export const EventsList = () => {
+export const EventsList = ({ year }: { year?: string }) => {
   return (
     <div className='min-h-screen p-0'>
-      {data.map((item, index) => (
+      {getEventsListData(year).map((item, index) => (
         <TextParallaxContent
           key={index}
           imgUrl={item.imgUrl}
@@ -192,3 +192,26 @@ const data = [
     url: '/24/esummit',
   },
 ];
+
+const data25 = [
+  {
+    imgUrl: 'https://ioit.acm.org/tenet/ui/events/tech.jpeg',
+    subheading: 'Day 1',
+    heading: 'INAUGURATION',
+    url: '/24/techfiesta',
+  },
+  {
+    imgUrl: 'https://ioit.acm.org/tenet/ui/events/building.jpeg',
+    subheading: 'Day 2',
+    heading: 'COMPETITIONS',
+    url: '/24/esummit',
+  },
+  {
+    imgUrl: 'https://ioit.acm.org/tenet/ui/events/mun.jpeg',
+    subheading: 'Day 3',
+    heading: 'FINALS & SHOWCASE',
+    url: '/24/esummit',
+  },
+];
+
+const getEventsListData = (year?: string) => (year === '25' ? data25 : data);
