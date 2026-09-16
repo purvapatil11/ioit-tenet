@@ -197,7 +197,7 @@ const data25 = [
   {
     imgUrl: 'https://ioit.acm.org/tenet/ui/events/tech.jpeg',
     subheading: 'Day 1',
-    heading: 'INAUGURATION',
+    heading: 'INAUGURATION & HACKATHON',
     url: '/24/techfiesta',
   },
   {

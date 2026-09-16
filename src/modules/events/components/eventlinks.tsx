@@ -62,11 +62,9 @@ export const EventLinksStructure: React.FC<{ day: number }> = ({ day }) => {
     <div ref={eventsContainerRef} className='timeline my-10 md:px-10'>
       {Object.entries(eventsByDomain).map(([domain, domainEvents]) => (
         <div key={domain} className='mb-12'>
-          {domain !== 'techfiesta' && (
-            <h1 className='mb-6 text-xl font-bold text-gray-800 md:text-3xl'>
-              {domain.toUpperCase()}
-            </h1>
-          )}
+          <h1 className='mb-6 text-xl font-bold text-gray-800 md:text-3xl'>
+            {domain.toUpperCase()}
+          </h1>
 
           <div className='grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12'>
             {domainEvents
@@ -93,7 +91,7 @@ const EventCard: React.FC<{ event: EventType; year: string }> = ({ event, year }
           src={event.image}
           alt={event.title}
           layout='fill'
-          objectFit={event.domain === 'mun' ? 'contain' : 'cover'}
+          objectFit='cover'
           className='bg-gray-600 transition-transform duration-500 group-hover:scale-110'
         />
         <div className='absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70'></div>

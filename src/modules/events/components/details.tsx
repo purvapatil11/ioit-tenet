@@ -171,9 +171,7 @@ ${
               src={event.image}
               alt={event.title}
               layout='fill'
-              objectFit={
-                event.domain === 'mun' && event.imp ? 'contain' : 'cover'
-              }
+              objectFit='cover'
               className='bg-gray-700 transition-transform duration-500 group-hover:rotate-1 group-hover:scale-110'
             />
           </div>
