@@ -38,6 +38,9 @@ export const Links: React.FC = () => {
         <Magnets link='/24/events' className='link-item text-white'>
           TENET&apos;25
         </Magnets>
+        <Magnets link='/25/events' className='link-item text-white'>
+          TENET&apos;25
+        </Magnets>
         <Magnets link='https://www.instagram.com/ioit_tenet/' className='link-item text-white'>
           Instagram
         </Magnets>

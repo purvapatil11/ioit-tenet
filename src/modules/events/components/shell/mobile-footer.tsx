@@ -13,21 +13,24 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel';
 import { useState, useEffect } from 'react';
-import { day1, day2, day3 } from '@/config/data/24/events';
+import { getEventsByYear } from '@/lib/getEvents';
+import type { EventType } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { speakers } from '@/config/data/24/speakers';
 
 const MobileFooter = () => {
-  const allEvents = [...day1, ...day2, ...day3];
+  const pathname = usePathname();
+  const allEvents: EventType[] = getEventsByYear(
+    pathname.split('/')[1] ?? '25',
+  );
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
-  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isEventsPath = pathname.startsWith('/events');
+  const isEventsPath = pathname.includes('/events');
 
   useEffect(() => {
     if (!api) {
@@ -38,7 +41,7 @@ const MobileFooter = () => {
 
     if (isEventsPath) {
       currentIndex = allEvents.findIndex(
-        (event) => `/events/${event.id}` === pathname,
+        (event) => pathname.includes(`/events/${event.id}`),
       );
     } else {
       currentIndex = speakers.findIndex(
@@ -77,14 +80,14 @@ const MobileFooter = () => {
               {allEvents.map((event, index) => (
                 <CarouselItem key={index}>
                   <Link
-                    href={`/24/events/${event.id}`}
+                    href={`/${pathname.split('/')[1] ?? '25'}/events/${event.id}`}
                     onClick={handleItemClick}
                   >
                     <div className='relative flex h-full select-none flex-col items-center justify-between px-4 py-10 text-center'>
                       <Image
                         src={event.image}
                         alt={event.title}
-                        className={`rounded-full border border-black bg-gray-700 ${event.domain === 'mun' && event.imp ? 'p-5' : 'p-0'}`}
+                        className='rounded-full border border-black bg-gray-700 p-0'
                         height={200}
                         width={200}
                         style={{

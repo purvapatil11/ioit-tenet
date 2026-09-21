@@ -20,10 +20,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Separator } from '@/components/ui/separator';
 import { speakers } from '@/config/data/24/speakers';
 import EventNavigation from './eventnavigation';
+import { usePathname } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const Details = ({ event }: { event: EventType }) => {
+  const pathname = usePathname();
+  const year = pathname.split('/')[1] ?? '25';
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -168,9 +171,7 @@ ${
               src={event.image}
               alt={event.title}
               layout='fill'
-              objectFit={
-                event.domain === 'mun' && event.imp ? 'contain' : 'cover'
-              }
+              objectFit='cover'
               className='bg-gray-700 transition-transform duration-500 group-hover:rotate-1 group-hover:scale-110'
             />
           </div>
@@ -253,7 +254,7 @@ ${
                 <h2 className='mb-4 text-xl font-semibold'>Speakers</h2>
                 <div className='space-y-4'>
                   {sessionSpeakers.map((speaker, index) => (
-                    <SpeakerCard key={index} speaker={speaker} />
+                    <SpeakerCard key={index} speaker={speaker} year={year} />
                   ))}
                 </div>
               </div>
@@ -320,7 +321,7 @@ ${
                   type='button'
                   className='text-black hover:text-white'
                   onClick={() =>
-                    handleShare({ msg, url: `/24/events/${event.id}` })
+                    handleShare({ msg, url: `/${year}/events/${event.id}` })
                   }
                 >
                   Share
@@ -335,10 +336,10 @@ ${
   );
 };
 
-const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
+const SpeakerCard = ({ speaker, year }: { speaker: Speaker; year: string }) => {
   return (
     <Link
-      href={`/24/speakers/${speaker.id}`}
+      href={`/${year}/speakers/${speaker.id}`}
       className='flex w-full items-center space-x-3 p-3 transition-all duration-150 hover:rounded-xl hover:bg-slate-500 md:w-fit'
     >
       <div className='relative h-16 w-16 md:h-20 md:w-20'>
