@@ -122,7 +122,9 @@ export function Tickets() {
         >
           <h1 className='text-4xl font-bold sm:text-6xl'>TENET 2025</h1>
           <p className='mt-4 text-lg'>
-            TENET 2025, organized by the AISSMS IOIT ACM Student Chapter, marked another milestone in our journey of fostering innovation and collaboration. This year, we proudly hosted the first edition of the TENET Hackathon and the third edition of IOIT MUN, alongside a range of exciting technical and non-technical events. Our focus for this edition was to create an engaging and memorable experience for all participants while nurturing a culture of building and problem-solving within our region. To support this vision, we introduced robotics competitions, workshops, and hands-on learning experiences that inspired students to innovate, explore, and collaborate. TENET 2025 truly embodied the spirit of creativity, teamwork, and technological growth.
+            TENET is the flagship techfest of AISSMS Institute of Information Technology, Pune, organized by the ACM Student Chapter. 
+            It is a three-day celebration of technology, innovation, and ideas that brings together students, developers, designers, and creators from across the country. 
+            With events spanning hackathons, Model United Nations, robotics, cybersecurity, workshops, and esports, TENET provides a platform to learn, compete, collaborate, and build for the future.
           </p>
         </div>
       )}
